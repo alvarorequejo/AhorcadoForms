@@ -23,21 +23,20 @@ namespace AhorcadoForms
             textBoxInputWord.Hide();
             labelInputWord.Hide();
             buttonInputWord.Hide();
-            Reference.h = new HiddenWord(textBoxInputWord.TextLength, textBoxInputWord.Text);
-            Reference.h.HiddeWord();
-            string s = new string (Reference.h.GetHiddenWordArray());
+            Reference.w = new Word(textBoxInputWord.TextLength, textBoxInputWord.Text);
+            Reference.w.HiddeWord();
+            string s = new string (Reference.w.GetHiddenWordArray());
             labelHiddenWord.Text = s;
         }
 
         private void buttonInputChar_Click(object sender, EventArgs e)
         {
             char letter = textBoxInputChar.Text[0];
-            Reference.w = new Word(Reference.h,ref letter);
             if (Utilidades.CheckChar(letter, Reference.inLetter, Reference.w.GetCharArray()))
             {
                 Reference.inLetter[Reference.tries] = letter;
-                Reference.w.WriteChar();
-                labelHiddenWord.Text = new string(Reference.h.GetHiddenWordArray());
+                Utilidades.WriteChar(Reference.w.GetWordLength(), Reference.w.GetWordCharArray(), Reference.w.GetHiddenWordArray(), letter);
+                labelHiddenWord.Text = new string(Reference.w.GetHiddenWordArray());
                 Reference.tries++;
             }
             else if (!(Reference.w.GetCharArray().Contains(letter)) && (!(Reference.inLetter.Contains(letter))))

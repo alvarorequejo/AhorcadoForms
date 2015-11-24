@@ -16,12 +16,15 @@ namespace AhorcadoForms
         {
             return wordCharArray.Contains(l) && !iL.Contains(l);
         }
-        public static void clicking1(ref char[] iL, char letter, ref int i, ref System.Windows.Forms.Label l, Word w)
+        public static void WriteChar(int wordLength, char[] wordCharArray, char[] hiddenWordArray, char letter) //escribir la letra
         {
-            iL[i] = letter;
-            w.WriteChar();
-            l.Text = new string(Reference.h.GetHiddenWordArray());
-            i++;
+            for (int i = 0; i < wordLength; i++)
+            {
+                if (wordCharArray[i] == letter)
+                {
+                    hiddenWordArray[i] = letter;
+                }
+            }
         }
     }
 }
